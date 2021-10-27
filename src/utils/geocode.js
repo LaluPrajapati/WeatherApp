@@ -9,11 +9,11 @@ const geocode = (address, callback) => {
     } else if (response.body.error) {
       callback("Unable to find location", undefined);
     } else {
-      const { lat, lon, name } = response.body.location;
+      const { lat, lon, name, country, region } = response.body.location;
       callback(undefined, {
         latitude: lat,
         longitude: lon,
-        location: name,
+        location: `${name}, ${region}, ${country}`,
       });
     }
   });
